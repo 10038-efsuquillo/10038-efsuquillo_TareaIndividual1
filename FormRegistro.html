@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>LOGISTICA</title>
+    <script type="text/javascript">
+      function showContent(){
+        var elem = document.getElementById('FormConfidencial');
+        var option = document.getElementById('chbEntrega2');
+        if(option.checked){
+          elem.style.display='block';
+        }else{
+          elem.style.display='none';
+        }
+      }
+      function comprobar(obj){
+            if (obj.checked){
+              document.getElementById('SubmitDireccion').disabled = false;
+            }
+          else{
+              document.getElementById('SubmitDireccion').disabled = true;
+            }
+      }
+    </script>
+    <style type="text/css">
+      #FormConfidencial{
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <form action="./Script_PHP/registrar.php" method="POST" name="FormDireccion" target="_blank">
+       <fieldset> <!--agrupa varios elementos del form-->
+         <legend>DIRECCION DE ENVIO </legend>
+         Calle Principal <br>
+         <input type="text" name="txtPrincipal" value="">
+         <br><br>
+         Transversal<br>
+         <input type="text" name="txtTransversal" value="">
+        
+        <br><br>
+        <input type="checkbox" name="chbEntrega1" id="chbEntrega1" value="PROPIETARIO" class="checkoption" onchange="comprobar(this);"> Entrega al propietario.<br>
+        <input type="checkbox" name="chbEntrega2" id="chbEntrega2" value="TERCERO" class="checkoption" onchange="showContent();"> Entrega a un tercero.
+        <!--<input type="radio" id="entrega" name="rbEntrega2" value="PROPIETARIO" checked >Propietario<br>
+        <input type="radio" id="entrega" name="rbEntrega2" value="TERCERO">Tercero-->
+
+         <br><br>
+         Cantones: <select  name="cmbCantones">
+              <optgroup label="PICHINCHA">
+                    <option value="Q">Quito</option>
+                    <option value="R">Rumiñahui</option>
+                    <option value="M">Mejia</option>
+             </optgroup>
+             
+             <optgroup label="GUAYAS">
+                    <option value="G">Guayaquil</option>
+                    <option value="S">Santa Elena</option>
+                    <option value="SL">Salinas</option>
+             </optgroup>
+             
+         </select>
+         
+         <br><br>
+           <input type="submit" name="SubmitDireccion" id="SubmitDireccion" value="REGISTRAR">
+       </fieldset>
+    </form>
+    
+    <br>
+    <form action="./Script_PHP/procesa.php" method="POST" name="FormConfidencial" id="FormConfidencial" target="_blank">
+      <br>  
+       <fieldset>
+         <legend>INFORMACIÓN CONFIDENCIAL</legend>
+         Código Postal: 
+         <input type="password" name="pswCodigoPostal" value="">
+         
+         <br><br>
+         Referencia de la Dirección:<br>
+         <textarea name="Mensaje" rows="3" cols="30" id="Mensaje"></textarea><br>
+         <br>
+           <input type="submit" name="SubmitConfidencial" value="PROCESAR">
+       </fieldset>
+    </form>
+    <br><br>
+    <a href="index.html">Regresar</a>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"></script>
+  </body>
+  
+</html>
